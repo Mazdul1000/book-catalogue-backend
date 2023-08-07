@@ -45,7 +45,7 @@ const getAllBooks = async ( filters: IBookFilters): Promise<IBook[] | null> => {
       const whereCondition =
     andConditions.length > 0 ? { $and: andConditions } : {};
 
-  const result = await Book.find(whereCondition);
+  const result = await Book.find(whereCondition).sort({ createdAt: -1 });
   return result;
 };
 const getSingleBook = async (payload: string): Promise<IBook | null> => {
